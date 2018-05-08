@@ -24,14 +24,44 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="no messages" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HUz-dK-zlB">
+                                <rect key="frame" x="0.0" y="57" width="375" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mv2-bg-fYR">
+                                <rect key="frame" x="107" y="86" width="161" height="30"/>
+                                <state key="normal" title="Get Characteristic Data"/>
+                                <connections>
+                                    <action selector="getCharacteristicData" destination="BYZ-38-t0r" eventType="touchUpInside" id="lwk-Me-5tp"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rfW-zq-tl0">
+                                <rect key="frame" x="121" y="124" width="132" height="30"/>
+                                <state key="normal" title="Get Workout Types"/>
+                                <connections>
+                                    <action selector="fetchWorkouts" destination="BYZ-38-t0r" eventType="touchUpInside" id="2kY-23-7c6"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="HUz-dK-zlB" secondAttribute="trailing" id="Dmf-Rr-Jut"/>
+                            <constraint firstItem="mv2-bg-fYR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YbL-TL-1Bg"/>
+                            <constraint firstItem="HUz-dK-zlB" firstAttribute="top" secondItem="5fM-uS-4T0" secondAttribute="bottom" constant="16" id="bAG-5u-plT"/>
                             <constraint firstItem="5fM-uS-4T0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="cfX-hu-awH"/>
+                            <constraint firstItem="rfW-zq-tl0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eVZ-vz-Xp0"/>
+                            <constraint firstItem="HUz-dK-zlB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="gxn-iI-uyh"/>
+                            <constraint firstItem="mv2-bg-fYR" firstAttribute="top" secondItem="HUz-dK-zlB" secondAttribute="bottom" constant="8" id="rsx-W3-EKA"/>
                             <constraint firstItem="5fM-uS-4T0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tND-WL-N3X"/>
+                            <constraint firstItem="rfW-zq-tl0" firstAttribute="top" secondItem="mv2-bg-fYR" secondAttribute="bottom" constant="8" id="xeh-nD-VUl"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="messageLabel" destination="HUz-dK-zlB" id="TJ2-qF-2Tp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

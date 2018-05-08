@@ -13,6 +13,7 @@
 		7DA5B2D220A11EA2009248C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DA5B2D120A11EA2009248C0 /* Assets.xcassets */; };
 		7DA5B2D520A11EA2009248C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DA5B2D320A11EA2009248C0 /* LaunchScreen.storyboard */; };
 		7DA5B2DF20A12F49009248C0 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DA5B2DE20A12F49009248C0 /* HealthKit.framework */; };
+		7DA5B2E120A13DAC009248C0 /* HealthKitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA5B2E020A13DAC009248C0 /* HealthKitExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		7DA5B2D620A11EA2009248C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7DA5B2DC20A12F49009248C0 /* HealthClub.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HealthClub.entitlements; sourceTree = "<group>"; };
 		7DA5B2DE20A12F49009248C0 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		7DA5B2E020A13DAC009248C0 /* HealthKitExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				7DA5B2D120A11EA2009248C0 /* Assets.xcassets */,
 				7DA5B2D320A11EA2009248C0 /* LaunchScreen.storyboard */,
 				7DA5B2D620A11EA2009248C0 /* Info.plist */,
+				7DA5B2E020A13DAC009248C0 /* HealthKitExtensions.swift */,
 			);
 			path = HealthClub;
 			sourceTree = "<group>";
@@ -155,6 +158,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DA5B2E120A13DAC009248C0 /* HealthKitExtensions.swift in Sources */,
 				7DA5B2CD20A11EA2009248C0 /* ViewController.swift in Sources */,
 				7DA5B2CB20A11EA2009248C0 /* AppDelegate.swift in Sources */,
 			);
