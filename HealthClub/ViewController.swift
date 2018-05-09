@@ -52,7 +52,6 @@ class ViewController: UIViewController {
                                   sortDescriptors: nil)
         {
             (query, samples, error) in
-            var message = ""
             
             guard let samples = samples else {
                 DispatchQueue.main.async {
@@ -61,17 +60,22 @@ class ViewController: UIViewController {
                 return
             }
 
+            var reduction = [String: Int]()
             for sample in samples {
                 if let workoutSample = sample as? HKWorkout {
-                    message += workoutSample.workoutActivityType.humanReadableName()
-                    message += " "
+                    let name = workoutSample.workoutActivityType.humanReadableName()
+                    reduction[name, default: 0] += 1
                 } else {
                     print("BOO")
                 }
             }
             
             DispatchQueue.main.async {
-                self.messageLabel.text = message
+                let workouts = reduction.reduce("", { (result, keyvalue) -> String in
+                    return result + "\(keyvalue.key) : \(keyvalue.value)\n"
+                })
+
+                self.messageLabel.text = workouts
             }
         }
         
