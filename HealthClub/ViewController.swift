@@ -107,7 +107,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UITableViewDataSource {
+extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -134,6 +134,14 @@ extension ViewController: UITableViewDataSource {
         return cell
     }
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let workout = workouts[indexPath.row]
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "WorkoutDetailViewController") 
+            as! WorkoutDetailViewController
+        vc.workout = workout
+        vc.hkstore = hkstore
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 

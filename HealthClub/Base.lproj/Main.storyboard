@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QZ8-Hd-hj8">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -19,33 +19,33 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HEALTH CLUB" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5fM-uS-4T0">
-                                <rect key="frame" x="104" y="20" width="112" height="21"/>
+                                <rect key="frame" x="104" y="64" width="112" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="no messages" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HUz-dK-zlB">
-                                <rect key="frame" x="0.0" y="57" width="320" height="20.5"/>
+                                <rect key="frame" x="0.0" y="101" width="320" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mv2-bg-fYR">
-                                <rect key="frame" x="79.5" y="85.5" width="161" height="30"/>
+                                <rect key="frame" x="79.5" y="129.5" width="161" height="30"/>
                                 <state key="normal" title="Get Characteristic Data"/>
                                 <connections>
                                     <action selector="getCharacteristicData" destination="BYZ-38-t0r" eventType="touchUpInside" id="lwk-Me-5tp"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rfW-zq-tl0">
-                                <rect key="frame" x="94" y="123.5" width="132" height="30"/>
+                                <rect key="frame" x="94" y="167.5" width="132" height="30"/>
                                 <state key="normal" title="Get Workout Types"/>
                                 <connections>
                                     <action selector="fetchWorkouts" destination="BYZ-38-t0r" eventType="touchUpInside" id="2kY-23-7c6"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="606-eX-8Iz">
-                                <rect key="frame" x="0.0" y="153.5" width="320" height="414.5"/>
+                                <rect key="frame" x="0.0" y="197.5" width="320" height="370.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="26Y-oz-zz8"/>
@@ -71,6 +71,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="ngZ-Cy-aB2"/>
                     <connections>
                         <outlet property="messageLabel" destination="HUz-dK-zlB" id="TJ2-qF-2Tp"/>
                         <outlet property="workoutsTableView" destination="606-eX-8Iz" id="Xn7-ek-SOP"/>
@@ -78,6 +79,70 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1021.875" y="26.408450704225352"/>
+        </scene>
+        <!--Workout-->
+        <scene sceneID="Kwr-1o-Y8E">
+            <objects>
+                <viewController storyboardIdentifier="WorkoutDetailViewController" title="Workout" id="Jxb-dh-bdE" customClass="WorkoutDetailViewController" customModule="HealthClub" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WY1-E5-p7g">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ItA-qp-UDi">
+                                <rect key="frame" x="0.0" y="64" width="320" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hGD-pZ-HtC">
+                                <rect key="frame" x="0.0" y="126" width="320" height="242"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Jxb-dh-bdE" id="idj-AR-nor"/>
+                                    <outlet property="delegate" destination="Jxb-dh-bdE" id="zFh-Ud-PfM"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ItA-qp-UDi" firstAttribute="top" secondItem="tGs-Pc-Nou" secondAttribute="top" id="ImQ-hK-YIR"/>
+                            <constraint firstItem="hGD-pZ-HtC" firstAttribute="top" secondItem="ItA-qp-UDi" secondAttribute="bottom" constant="26" id="MyS-W9-InS"/>
+                            <constraint firstItem="tGs-Pc-Nou" firstAttribute="trailing" secondItem="ItA-qp-UDi" secondAttribute="trailing" id="coy-WG-H3D"/>
+                            <constraint firstItem="tGs-Pc-Nou" firstAttribute="bottom" secondItem="hGD-pZ-HtC" secondAttribute="bottom" constant="200" id="fAA-Fc-L5m"/>
+                            <constraint firstItem="ItA-qp-UDi" firstAttribute="leading" secondItem="tGs-Pc-Nou" secondAttribute="leading" id="lRS-1a-33e"/>
+                            <constraint firstItem="hGD-pZ-HtC" firstAttribute="leading" secondItem="tGs-Pc-Nou" secondAttribute="leading" id="mvv-3R-8hP"/>
+                            <constraint firstItem="tGs-Pc-Nou" firstAttribute="trailing" secondItem="hGD-pZ-HtC" secondAttribute="trailing" id="vrC-SJ-oG9"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="tGs-Pc-Nou"/>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="samplesTableView" destination="hGD-pZ-HtC" id="9HU-By-QCx"/>
+                        <outlet property="titleLabel" destination="ItA-qp-UDi" id="tQB-A1-qt0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rz9-ff-W1V" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1821" y="26"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="i7s-Bk-cLR">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QZ8-Hd-hj8" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="kOh-d9-NzV">
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="gnb-Qp-fAY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b4U-Yw-z0s" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="22.5" y="695.07042253521126"/>
         </scene>
     </scenes>
 </document>
