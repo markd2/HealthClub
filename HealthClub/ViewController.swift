@@ -12,6 +12,7 @@ import HealthKit
 class ViewController: UIViewController {
     var hkstore: HKHealthStore!
     @IBOutlet var messageLabel: UILabel!
+    var workouts: [HKWorkout] = []
     
     private func setupHealthStore() {
         hkstore = HKHealthStore()
@@ -43,6 +44,20 @@ class ViewController: UIViewController {
         }
     }
     
+    private func setMessage(_ message: String) {
+        DispatchQueue.main.async {
+            self.messageLabel.text = message
+        }
+    }
+    
+    private func processWorkoutSamples(_ samples: [HKSample]) {
+        workouts = samples.compactMap { $0 as? HKWorkout }
+        let workoutCounts = workouts.reduce(into: [String: Int]()) { $0[$1.workoutActivityType.humanReadableName(), default: 0] += 1 }
+        
+        let workoutMessage = workoutCounts.reduce("", { $0 + "\($1.key) : \($1.value)\n" })
+        setMessage("Workouts: " + workoutMessage)
+    }
+    
     @IBAction func fetchWorkouts() {
         let sampleType = HKWorkoutType.workoutType()
     
@@ -50,33 +65,15 @@ class ViewController: UIViewController {
                                   predicate: nil,
                                   limit: HKObjectQueryNoLimit,
                                   sortDescriptors: nil)
-        {
-            (query, samples, error) in
-            
+        { (query, samples, error) in
             guard let samples = samples else {
                 DispatchQueue.main.async {
                     self.messageLabel.text = "so sad"
                 }
                 return
             }
-
-            var reduction = [String: Int]()
-            for sample in samples {
-                if let workoutSample = sample as? HKWorkout {
-                    let name = workoutSample.workoutActivityType.humanReadableName()
-                    reduction[name, default: 0] += 1
-                } else {
-                    print("BOO")
-                }
-            }
             
-            DispatchQueue.main.async {
-                let workouts = reduction.reduce("", { (result, keyvalue) -> String in
-                    return result + "\(keyvalue.key) : \(keyvalue.value)\n"
-                })
-
-                self.messageLabel.text = workouts
-            }
+            self.processWorkoutSamples(samples)
         }
         
         hkstore.execute(query)
