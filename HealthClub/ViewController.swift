@@ -28,14 +28,17 @@ class ViewController: UIViewController {
     private func setupHealthStore() {
         hkstore = HKHealthStore()
         
-        let types = Set([HKObjectType.workoutType(),
+        let readTypes = Set([HKObjectType.workoutType(),
                          HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.activeEnergyBurned)!,
                          HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)!,
                          HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!,
                          
                          HKObjectType.characteristicType(forIdentifier: HKCharacteristicTypeIdentifier.bloodType)!,
                          ])
-        hkstore.requestAuthorization(toShare: [], read: types) {
+        
+        let writeTypes = Set([HKObjectType.workoutType(),
+                              HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!])
+        hkstore.requestAuthorization(toShare: writeTypes, read: readTypes) {
             (success, error) in
             if !success {
                 var messageText = "Couldn't access health store."
@@ -89,7 +92,66 @@ class ViewController: UIViewController {
         } catch {
             setMessage("Could not get blood type: \(error)")
         }
+    }
+    
+    private func addWorkout() {
+        let finish = Date()
+        let start = finish.addingTimeInterval(-3600)
         
+
+        // public convenience init(activityType workoutActivityType: HKWorkoutActivityType, start startDate: Date, end endDate: Date)
+        // good luck trying to do completion with HKWorkout.init... #ilyxc
+
+        let workout = HKWorkout(activityType: .americanFootball, 
+                                start: start, end: finish)
+
+//        let workout = HKWorkout.init(activityType: .americanFootball, start: start, end: finish, workoutEvents: workoutEvents, totalEnergyBurned: nil, totalDistance: nil, metadata: nil)
+        
+        hkstore.save(workout) { (success, error) in
+            guard success else {
+                self.setMessage("Bummer, couldn't make workout")
+                return
+            }
+            self.setMessage("WOO!")
+
+            // now add the heart rates
+            var fakeSamples: [HKQuantitySample] = []
+            
+            for x in 0..<360 {
+                let hrStart = start.addingTimeInterval(TimeInterval(x * 10)) // 10 seconds per heart rate
+                
+                guard let heartRateQuantityType = HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate) else {
+                    fatalError("*** Unable to create a heart rate type ***")
+                }
+                
+                let heartRate = 100 + 20 * sin(Double(x) / 50)
+                let heartRateForIntervalQuantity = HKQuantity(unit: HKUnit(from: "count/min"),
+                                                              doubleValue: heartRate)
+                
+                let heartRateForIntervalSample =
+                    HKQuantitySample(type: heartRateQuantityType, 
+                                     quantity: heartRateForIntervalQuantity,
+                                     start: hrStart,
+                                     end: hrStart)
+                
+                // Ethel the Aardvark goes Quantity Surveying
+                
+                fakeSamples.append(heartRateForIntervalSample)
+            }
+            
+            self.hkstore.add(fakeSamples, to: workout) { (success, error) in
+                guard success else {
+                    self.setMessage("Bummer, couldn't add samples")
+                    return
+                }
+                self.setMessage("Woo2")
+            }
+
+        }
+    }
+    
+    @IBAction func makeWorkout() {
+        addWorkout()
     }
     
     override func viewDidLoad() {

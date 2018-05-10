@@ -12,6 +12,7 @@ class WorkoutDetailViewController: UIViewController {
     @IBOutlet var samplesTableView: UITableView!
     @IBOutlet var heartRateGraphView: HeartRateGraphView!
     private let cellReuseIdentifier = "Cat."
+    var heartRates: [HKQuantitySample] = []
 
     
     override func viewDidLoad() {
@@ -52,10 +53,11 @@ class WorkoutDetailViewController: UIViewController {
                 return
             }
 
-            let heartRates = samples.compactMap { $0 as? HKQuantitySample }
+            self.heartRates = samples.compactMap { $0 as? HKQuantitySample }
             
             DispatchQueue.main.async {
-                self.heartRateGraphView.heartRateSamples = heartRates
+                self.samplesTableView.reloadData()
+                self.heartRateGraphView.heartRateSamples = self.heartRates
             }
         }
         hkstore.execute(query)
@@ -72,24 +74,19 @@ extension WorkoutDetailViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 12
+        return heartRates.count
     }
     
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, 
                                                  for: indexPath) as UITableViewCell
+        let sample = heartRates[indexPath.row]
         
-//        let workout = workouts[indexPath.row]
-//        
-//        let name = workout.workoutActivityType.humanReadableName()
-//        let duration = workout.duration
-//        let durationString = formatter.string(from: duration) ?? "-"
-//        let start = workout.startDate
-//        
-//        cell.textLabel?.text = "\(name) - \(durationString) - \(start)"
-        
-        cell.textLabel?.text = "\(indexPath.row)"
+        let unit = HKUnit.count().unitDivided(by: HKUnit.minute())
+        let heartRate = Int(sample.quantity.doubleValue(for: unit))
+ 
+        cell.textLabel?.text = "\(heartRate)"
         
         return cell
     }

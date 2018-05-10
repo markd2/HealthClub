@@ -47,5 +47,7 @@
 	</array>
 	<key>NSHealthShareUsageDescription</key>
 	<string>All your health are belong to us.</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>All your health are belong to us.</string>
 </dict>
 </plist>
