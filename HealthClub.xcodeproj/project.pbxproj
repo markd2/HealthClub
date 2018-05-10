@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7D40F6C620A33E47003350D5 /* WorkoutDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D40F6C520A33E47003350D5 /* WorkoutDetailViewController.swift */; };
+		7D4CC3EA20A3C56400ED3F4C /* HeartRateGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4CC3E920A3C56400ED3F4C /* HeartRateGraphView.swift */; };
 		7DA5B2CB20A11EA2009248C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA5B2CA20A11EA2009248C0 /* AppDelegate.swift */; };
 		7DA5B2CD20A11EA2009248C0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA5B2CC20A11EA2009248C0 /* ViewController.swift */; };
 		7DA5B2D020A11EA2009248C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DA5B2CE20A11EA2009248C0 /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		7D40F6C520A33E47003350D5 /* WorkoutDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDetailViewController.swift; sourceTree = "<group>"; };
+		7D4CC3E920A3C56400ED3F4C /* HeartRateGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateGraphView.swift; sourceTree = "<group>"; };
 		7DA5B2C720A11EA2009248C0 /* HealthClub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthClub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DA5B2CA20A11EA2009248C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7DA5B2CC20A11EA2009248C0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				7DA5B2D620A11EA2009248C0 /* Info.plist */,
 				7DA5B2E020A13DAC009248C0 /* HealthKitExtensions.swift */,
 				7D40F6C520A33E47003350D5 /* WorkoutDetailViewController.swift */,
+				7D4CC3E920A3C56400ED3F4C /* HeartRateGraphView.swift */,
 			);
 			path = HealthClub;
 			sourceTree = "<group>";
@@ -162,6 +165,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7DA5B2E120A13DAC009248C0 /* HealthKitExtensions.swift in Sources */,
+				7D4CC3EA20A3C56400ED3F4C /* HeartRateGraphView.swift in Sources */,
 				7DA5B2CD20A11EA2009248C0 /* ViewController.swift in Sources */,
 				7DA5B2CB20A11EA2009248C0 /* AppDelegate.swift in Sources */,
 				7D40F6C620A33E47003350D5 /* WorkoutDetailViewController.swift in Sources */,

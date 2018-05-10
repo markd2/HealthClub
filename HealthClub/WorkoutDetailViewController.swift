@@ -10,6 +10,7 @@ class WorkoutDetailViewController: UIViewController {
         
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var samplesTableView: UITableView!
+    @IBOutlet var heartRateGraphView: HeartRateGraphView!
     private let cellReuseIdentifier = "Cat."
 
     
@@ -46,8 +47,16 @@ class WorkoutDetailViewController: UIViewController {
                                        limit: HKObjectQueryNoLimit,
                                        sortDescriptors: nil)
         { (query, samples, error) in
-            print("blah")
+            guard let samples = samples else {
+                print("so sad")
+                return
+            }
 
+            let heartRates = samples.compactMap { $0 as? HKQuantitySample }
+            
+            DispatchQueue.main.async {
+                self.heartRateGraphView.heartRateSamples = heartRates
+            }
         }
         hkstore.execute(query)
     }
