@@ -44,7 +44,7 @@ class HeartRateGraphView: UIView {
         
         var x = xStride
         for rate in heartRates {
-            let y = CGFloat(rate - min) * yScale
+            let y = CGFloat(max - rate) * yScale
             bezPath.addLine(to: CGPoint(x: x, y: y))
             x += xStride
         }
