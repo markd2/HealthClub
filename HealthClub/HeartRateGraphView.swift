@@ -24,15 +24,16 @@ class HeartRateGraphView: UIView {
     }
     
     private func drawGraph(_ bounds: CGRect) {
-        guard let min = heartRates.min() else { return }
-        guard let max = heartRates.max() else { return }
+        guard var min = heartRates.min() else { return }
+        guard var max = heartRates.max() else { return }
         let count = heartRates.count
         
         let width = bounds.width
         let height = bounds.height
-        
-//        min -= 30
-//        max += 30
+      
+        let pad = 17 // just a random number
+        min -= pad
+        max += pad
         let range = max - min
         
         let xStride = width / CGFloat(count)
@@ -56,9 +57,9 @@ class HeartRateGraphView: UIView {
         print("\(sample.quantity)")  // "89 count/min"
 
         print("got \(heartRateSamples.count) heart rates")
-//        drawBackground(bounds)
+        drawBackground(bounds)
         drawGraph(bounds)
-//        drawFrame(bounds)
+        drawFrame(bounds)
     }
 
 }
